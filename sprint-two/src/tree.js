@@ -16,11 +16,22 @@ treeMethods.addChild = function(value){
   this.children = child;
 };
 
-treeMethods.contains = function(value){
-  if(this.children.value === value) {
-    return true;
+treeMethods.contains = function(value, result){
+  debugger;
+  console.log(this.value);
+  console.log(value);
+  result = result || false;
+  if(!this.children){
+    return;
+  } else if (this.children.value === value) {
+    console.log("return true is running");
+    result = true;
+    return result;
   }
-  return false;
+  console.log("recursion is running");
+  result = this.children.contains(value, result);
+  // console.log("we are returning " +  result);
+  return result;
 };
 
 //       parent p
@@ -28,3 +39,5 @@ treeMethods.contains = function(value){
 //   |               |
 // child c          child a
 
+
+//newTree{children: newTree{value: "bobby", children: newTree{value: "rachel"}} };

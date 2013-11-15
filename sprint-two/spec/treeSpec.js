@@ -18,5 +18,18 @@ describe("tree", function() {
     tree.addChild("bobby");
     expect(tree.contains("bobby")).toBe(true);
   });
+  //did not break when we first implemented
+  it("should add child to existing child when we addChild", function(){
+    tree.addChild("bobby");
+    tree.children.addChild("rachel");
+    expect(tree.children.children.value).toEqual("rachel");
+  });
+  it("should return true if tree contains target with multiple levels", function(){
+    tree.addChild("bobby");
+    tree.children.addChild("rachel");
+    expect(tree.contains("rachel")).toBe(true);
+  });
+
+
   // Add more tests here to test the functionality of tree.
 });
