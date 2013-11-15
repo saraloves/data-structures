@@ -22,7 +22,9 @@ describe("linkedList", function() {
   });
   it("Expect contains to return true after adding an item", function(){
     linkedList.addToTail(5);
-    expect(linkedList.contains(5)).toEqual(true);
+    linkedList.addToTail(10);
+    linkedList.addToTail(15);
+    expect(linkedList.contains(15)).toEqual(true);
   });
   it("should return tail value when adding one item", function(){
     linkedList.addToTail(5);
