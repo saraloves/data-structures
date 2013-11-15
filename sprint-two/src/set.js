@@ -6,11 +6,26 @@ var makeSet = function(){
 
 var setPrototype = {};
 
-setPrototype.add = function(){
+setPrototype.add = function(value){
+  if(this._storage === undefined){
+    this._storage = [value];
+  } else {
+    if(!this.contains(value)){
+      this._storage.push(value);
+    }
+  }
 };
 
-setPrototype.contains = function(){
+setPrototype.contains = function(value){
+  if(this._storage.indexOf(value) !== -1){
+    return true;
+  } else {
+    return false;
+  }
 };
 
-setPrototype.remove = function(){
+setPrototype.remove = function(value){
+  if(this.contains(value)){
+    this._storage.splice(this._storage.indexOf(value), 1);
+  }
 };
