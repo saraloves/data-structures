@@ -10,6 +10,10 @@ describe("tree", function() {
     expect(tree.contains).toEqual(jasmine.any(Function));
     expect('value' in tree).toBe(true);
   });
+  it("should add a child when we invoke addChild", function(){
+    tree.addChild("bobby");
+    expect(tree.value).toEqual("bobby");
+  });
 
   // Add more tests here to test the functionality of tree.
 });
