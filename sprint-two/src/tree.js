@@ -10,15 +10,21 @@ var makeTree = function(){
 var treeMethods = {};
 
 treeMethods.addChild = function(value){
-  this.value = value;
+  // this.value = value;
+  var child = makeTree();
+  child.value = value;
+  this.children = child;
 };
 
-treeMethods.contains = function(){
+treeMethods.contains = function(value){
+  if(this.children.value === value) {
+    return true;
+  }
+  return false;
 };
 
 //       parent p
 //   ______|_________
 //   |               |
 // child c          child a
-
 

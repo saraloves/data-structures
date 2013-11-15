@@ -10,10 +10,13 @@ describe("tree", function() {
     expect(tree.contains).toEqual(jasmine.any(Function));
     expect('value' in tree).toBe(true);
   });
-  it("should add a child when we invoke addChild", function(){
+  it("should return tree when we add to tree", function(){
     tree.addChild("bobby");
-    expect(tree.value).toEqual("bobby");
+    expect(tree.children.value).toBe("bobby");
   });
-
+  it("should return true if tree contains target", function(){
+    tree.addChild("bobby");
+    expect(tree.contains("bobby")).toBe(true);
+  });
   // Add more tests here to test the functionality of tree.
 });
