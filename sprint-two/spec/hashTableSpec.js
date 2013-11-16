@@ -20,5 +20,17 @@ describe("hashTable", function() {
     expect(hashTable.retrieve(v2)).toEqual(v2);
   });
 
+  it("should insert value when using insert", function(){
+    hashTable.insert("person", "lindsey");
+    expect(hashTable.retrieve("person")).toEqual("lindsey");
+  });
+
+  it("should remove value when using remove", function(){
+    hashTable.insert("person", "lindsey");
+    hashTable.remove("person");
+    expect(hashTable.retrieve("person")).toEqual(undefined);
+  });
+
+
   // add more tests!
 });
