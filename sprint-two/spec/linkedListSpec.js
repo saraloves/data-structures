@@ -24,7 +24,10 @@ describe("linkedList", function() {
     linkedList.addToTail(5);
     linkedList.addToTail(10);
     linkedList.addToTail(15);
+    expect(linkedList.contains(5)).toEqual(true);
+    expect(linkedList.contains(10)).toEqual(true);
     expect(linkedList.contains(15)).toEqual(true);
+    expect(linkedList.contains(20)).toEqual(false);
   });
   it("should return tail value when adding one item", function(){
     linkedList.addToTail(5);
@@ -39,9 +42,9 @@ describe("linkedList", function() {
     linkedList.addToTail(5);
     linkedList.addToTail(10);
     linkedList.addToTail(15);
-    expect(linkedList[0].next).toEqual(1);
-    expect(linkedList[1].next).toEqual(2);
-    expect(linkedList[2].next).toEqual(null);
+    expect(linkedList.head.next.value).toEqual(10);
+    expect(linkedList.head.next.next.value).toEqual(15);
+    expect(linkedList.head.next.next.next).toEqual(null);
   });
   it("Should return head value if we remove head", function(){
     linkedList.addToTail(5);
@@ -53,6 +56,27 @@ describe("linkedList", function() {
     linkedList.addToTail(15);
     linkedList.removeHead();
     expect(linkedList.head.value).toEqual(10);
+  });
+  //Doubly linked lists
+  it("should point to previous node if there is more than one node", function(){
+    linkedList.addToTail(5);
+    linkedList.addToTail(10);
+    expect(linkedList.tail.previous.value).toEqual(5);
+  });
+
+  it("should point to new head when we add to head", function(){
+    linkedList.addToTail(5);
+    linkedList.addToTail(10);
+    linkedList.addToHead(15);
+    expect(linkedList.head.value).toEqual(15);
+    expect(linkedList.head.next.value).toEqual(5);
+  });
+  it("should point to new tail when we removeTail", function(){
+    linkedList.addToTail(5);
+    linkedList.addToTail(10);
+    linkedList.addToTail(15);
+    expect(linkedList.removeTail()).toEqual(15);
+    expect(linkedList.tail.value).toEqual(10);
   });
   // add more tests here to test the functionality of linkedList
 });
