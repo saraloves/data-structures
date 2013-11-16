@@ -56,6 +56,23 @@ describe("tree", function() {
     tree.addChild("desTinaY");
     expect(tree.contains("fabio")).toBe(false);
   });
-
+    it("should return true if tree contains target across multiple siblings and children", function(){
+    tree.addChild("booby");
+    tree.addChild("stacy");
+    tree.addChild("destinay");
+    tree.children[2].addChild("Faythe");
+    tree.children[2].addChild("Prizm");
+    tree.children[1].addChild("George");
+    tree.children[1].addChild("Madison");
+    tree.children[2].children[0].addChild("Robert");
+    expect(tree.contains("booby")).toBe(true);
+    expect(tree.contains("stacy")).toBe(true);
+    expect(tree.contains("destinay")).toBe(true);
+    expect(tree.contains("Faythe")).toBe(true);
+    expect(tree.contains("Prizm")).toBe(true);
+    expect(tree.contains("George")).toBe(true);
+    expect(tree.contains("Madison")).toBe(true);
+    expect(tree.contains("Robert")).toBe(true);
+  });
   // Add more tests here to test the functionality of tree.
 });

@@ -21,7 +21,6 @@ treeMethods.addChild = function(value){
 };
 
 treeMethods.contains = function(value){
-  var result;
   if(!this.children){
     return false;
   }
@@ -29,9 +28,9 @@ treeMethods.contains = function(value){
     if(this.children[i].value === value){
       return true;
     }
-    result = this.children[i].contains(value);
+    if(this.children[i].contains(value)) return true;
   }
-  return result;
+  return false;
 };
 
 //       parent p
