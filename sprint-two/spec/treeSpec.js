@@ -56,7 +56,7 @@ describe("tree", function() {
     tree.addChild("desTinaY");
     expect(tree.contains("fabio")).toBe(false);
   });
-    it("should return true if tree contains target across multiple siblings and children", function(){
+  it("should return true if tree contains target across multiple siblings and children", function(){
     tree.addChild("booby");
     tree.addChild("stacy");
     tree.addChild("destinay");
@@ -73,6 +73,30 @@ describe("tree", function() {
     expect(tree.contains("George")).toBe(true);
     expect(tree.contains("Madison")).toBe(true);
     expect(tree.contains("Robert")).toBe(true);
+  });
+  //Adding parent property to tree nodes
+  it("should know its parent", function(){
+    tree.addChild("booby");
+    tree.addChild("stacy");
+    tree.addChild("desTinaY");
+    tree.children[1].addChild("Peter");
+    tree.children[1].addChild("Kamla");
+    expect(tree.children[0].parent.value).toEqual(undefined);
+    expect(tree.children[1].parent.value).toEqual(undefined);
+    expect(tree.children[1].children[0].parent.value).toEqual("stacy");
+    expect(tree.children[1].children[1].parent.value).toEqual("stacy");
+  });
+  it("should remove child from tree when we call removeFromParent", function(){
+    tree.addChild("booby");
+    tree.addChild("stacy");
+    tree.addChild("destinay");
+    tree.children[2].addChild("Faythe");
+    tree.children[2].addChild("Prizm");
+    tree.children[1].addChild("George");
+    tree.children[1].addChild("Madison");
+    tree.children[2].children[0].addChild("Robert");
+    tree.children[2].removeFromParent();
+    expect(tree.contains("Faythe")).toBe(false);
   });
   // Add more tests here to test the functionality of tree.
 });
