@@ -27,6 +27,18 @@ var makeBinarySearchTree = function(){
     }
   };
   tree.contains = function(value){
+    if (value === tree.value) {
+      return true;
+    } else if (value > tree.value) {
+      if (tree.right) {
+        return tree.right.contains(value);
+      }
+    } else if (value < tree.value) {
+      if (tree.left) {
+        return tree.left.contains(value);
+      }
+    }
+    return false;
   };
   tree.depthFirstLog = function(callback){
 
