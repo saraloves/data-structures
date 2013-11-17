@@ -31,6 +31,22 @@ describe("hashTable", function() {
     expect(hashTable.retrieve("person")).toEqual(undefined);
   });
 
+  it("should automatically resize when size becomes bigger than limit", function(){
+    hashTable.insert("person", "lindsey");
+    hashTable.insert("cat", "Meowmers");
+    hashTable.insert("dog", "Mr. Barky");
+    hashTable.insert("bird", "Tweetface");
+    expect(hashTable._limit).toEqual(6);
+  });
+  it("should automatically resize when size becomes smaller than limit", function(){
+    hashTable.insert("person", "lindsey");
+    hashTable.insert("cat", "Meowmers");
+    hashTable.insert("dog", "Mr. Barky");
+    hashTable.insert("bird", "Tweetface");
+    hashTable.remove("cat");
+    hashTable.remove("bird");
+    expect(hashTable._limit).toEqual(3);
+  });
 
   // add more tests!
 });
