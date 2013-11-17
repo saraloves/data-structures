@@ -30,15 +30,30 @@ describe("binarySearchTree", function() {
   it("should return true if tree contains value we search for", function(){
     binarySearchTree.value = 50;
     binarySearchTree.insert(15);
-    // binarySearchTree.insert(20);
+    binarySearchTree.insert(20);
     binarySearchTree.insert(90);
-    // binarySearchTree.insert(80);
-    // binarySearchTree.insert(12);
+    binarySearchTree.insert(80);
+    binarySearchTree.insert(12);
     binarySearchTree.insert(85);
     expect(binarySearchTree.contains(15)).toEqual(true);
     expect(binarySearchTree.contains(90)).toEqual(true);
     expect(binarySearchTree.contains(85)).toEqual(true);
     expect(binarySearchTree.contains(22)).toEqual(false);
+  });
+  it("should alter the tree when we run depthFirstLog", function(){
+    var results = [];
+    binarySearchTree.value = 50;
+    binarySearchTree.insert(20);
+    binarySearchTree.insert(30);
+    binarySearchTree.insert(90);
+    binarySearchTree.insert(80);
+    binarySearchTree.insert(10);
+    binarySearchTree.insert(100);
+    binarySearchTree.depthFirstLog(function(value){
+      console.log("depth first before callback: " + value);
+      results.push((value+2));
+    });
+    expect(results).toEqual([12,32,22,82,102,92,52]);
   });
   // add more tests here to test the functionality of binarySearchTree
 });

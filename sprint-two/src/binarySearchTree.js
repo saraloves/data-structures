@@ -41,7 +41,19 @@ var makeBinarySearchTree = function(){
     return false;
   };
   tree.depthFirstLog = function(callback){
+    //start at parent node.  while searchtree.left exists, then we check to see if that one has a left.
+    //once searchtree.left no longer exists, then we run callback on the node we're on.
+    //go back up one level and go right.  if it exists, we go left.  we continue to go left until there are no
+    //more lefts.  once searchtree.left no longer exists, we run callback on the node we're on.
 
+    //base case: no more rights or lefts means that we run callback!
+    if (tree.left) {
+      tree.left.depthFirstLog(callback);
+    }
+    if (tree.right) {
+      tree.right.depthFirstLog(callback);
+    }
+      callback(tree.value);
   };
   return tree;
 };
